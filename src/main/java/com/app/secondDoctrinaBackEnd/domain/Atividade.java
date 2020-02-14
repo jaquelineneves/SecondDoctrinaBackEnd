@@ -35,6 +35,11 @@ public class Atividade implements Serializable {
     @OneToMany(mappedBy = "atividade")
     private List<Pergunta> perguntas = new ArrayList<>();
     
+    /*
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "atividade")
+    private List<Pergunta> perguntas = new ArrayList<>();
+    */    
+    
     public Atividade() {
     	
     }

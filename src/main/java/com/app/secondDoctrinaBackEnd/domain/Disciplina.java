@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +36,12 @@ public class Disciplina implements Serializable {
     // disciplina tem varios modulos, foi mapeado pelo campo disciplina
     @OneToMany(mappedBy = "disciplina")
     private List<Modulo> modulos = new ArrayList<>();
+    
+	// o cascade é necessário pq senao da erro (e pq se excluir uma disciplina tem que excluir os modulos)
+/*
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "disciplina")
+    private List<Modulo> modulos = new ArrayList<>();
+*/
 
 	@JsonIgnore
     @OneToMany(mappedBy="id.disciplina")

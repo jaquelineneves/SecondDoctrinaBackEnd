@@ -51,6 +51,11 @@ public class Modulo implements Serializable {
     @OneToMany(mappedBy = "modulo")
  	private List<Atividade> atividades = new ArrayList<>();
  	
+ 	/*
+ 	@JsonIgnore
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "modulo")
+ 	private List<Atividade> atividades = new ArrayList<>();
+ 	*/
 
     // modulo tem 1 disciplina
     @JsonIgnore
