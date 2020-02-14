@@ -2,31 +2,44 @@ package com.app.secondDoctrinaBackEnd.domain;
 
 import java.io.Serializable;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
-public class Administrador implements Serializable {
+public class Professor implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String email;
 	//senha
+	private String instituicao;
 	private String foto;
 	
-	public Administrador() {
+	// professor tem varias disciplinas, foi mapeado pelo campo professor
+	//@OneToMany(mappedBy = "professor")
+	//private List<Disciplina> disciplinas = new ArrayList<>();
+
+
+	public Professor() {
 	}
 
-	public Administrador(Integer id, String nome, String email, String foto) {
+	public Professor(Integer id, String nome, String email, String instituicao, String foto) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.instituicao = instituicao;
 		this.foto = foto;
 	}
 
@@ -53,7 +66,15 @@ public class Administrador implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public String getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(String instituicao) {
+		this.instituicao = instituicao;
+	}
+
 	public String getFoto() {
 		return foto;
 	}
@@ -78,13 +99,12 @@ public class Administrador implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Administrador other = (Administrador) obj;
+		Professor other = (Professor) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
+	}	
 }
